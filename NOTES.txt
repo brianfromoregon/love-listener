@@ -1,0 +1,59 @@
+/**
+ * scheduleFire is actor messages!
+ *
+ * static graph is reactive
+ *
+ * EventBus is pubsub, you send message and listeners react
+ * - that's reactive and i like it more than akka
+ *
+ * difference between static graph with reactionos and simple listeners? NO evidence of a difference!
+ *
+ * so............ follow eventbus model of pub sub.
+ *
+ * Nice functional DSL can map down to it
+ *
+ * Ok what about the notion of graph cycles and guarantees about all upstream triggering before downstream?
+ * - diamond topology
+ *
+ * Naive implementation would trigger the end of the diamond twice. Smart impl does it once!
+ * - acheived with notion of cycle? yes, but necessary?
+ * - relationship to fork join?
+ *
+ *
+ * what sort of parallelism do we have?
+ * - fast ticks. ticks are independant and can be processed out of order
+ * - market data cannot be processed out of order. but it can be conflated
+ * - with md, don't want to make final decision (end of graph) without everything in graph having a chance to react first
+ * - ordering of tweets doesnt matter. timestamps and replay of this isnt a requirement
+ * - notion of Time Series doesn't fit???
+ * - nice for testing... replay scenario in unit test, verify output/state
+ *
+ * when does order matter?
+ * - when you don't want to act on stale data
+ * - anything to do with finances
+ * - stale data? session stuff. gps honing in.
+ *
+ * most of web stuff isnt session, order doesnt matter. i just want the programming style!
+ * - functional transformations + pubsub
+ *
+ *
+ * should a node pull data or be given data?
+ * - common case is single data point coming in, a tick. plus use of services.
+ * - i don't like actor model of sending messages TO SOMEONE.
+ *
+ *
+ * do i want to scale across procs or just within one proc?
+ * - cluster?
+ *
+ * akka makes sending easy. but receiving needs to be generic. and yet receiving is the hard part.
+ *
+ * receiver, probably not a good idea to reference instances directly using new. because it could be some remote thing
+ * - also new is so last decade. if you have a dependency, state that in the beginning.
+ *
+ * Open question
+ * - what is the relationship between fork join and a dependency graph + inorder traversal?
+ * - what is EventBus threading model?
+ *
+ *
+ *
+ */
