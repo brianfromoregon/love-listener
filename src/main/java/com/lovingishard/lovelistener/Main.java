@@ -1,5 +1,7 @@
 package com.lovingishard.lovelistener;
 
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 import lang.Loggers;
 import org.slf4j.Logger;
 
@@ -13,18 +15,16 @@ public class Main {
 
     public void start() {
 
-        TwitterStreamer streamer = new TwitterStreamer();
-        PoorManPubsub.CanBeUpdated<Beam> beams = streamer.getBeams().mergeWith(sampleBeams());
+        Config config = ConfigFactory.load();
+        TwitterStreamer streamer = new TwitterStreamer(config);
+        MongoBeamStore store = new MongoBeamStore(config);
+
+        PoorManPubsub.Stream<Beam> beams = streamer.getBeams().mergeWith(sampleBeams());
 
         beams.map(String::valueOf).forEach(log::info);
+        beams.forEach(store::write);
 
-        new PoorManPubsub.Node<Beam>(beams) {
-            @Override
-            protected void react(Beam beam) {
-                log.info("I am writing this value to a db: " + beam);
-            }
-        };
-
+        store.connect();
         streamer.start();
     }
 
@@ -41,7 +41,7 @@ public class Main {
             @Override
             public void run() {
                 while (true) {
-                    beams.update(new Beam.Impl(x++, x++, x++, String.valueOf(x++)));
+                    beams.update(new Beam.Impl(x++, x++, 0, System.currentTimeMillis(), String.valueOf(x++)));
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {

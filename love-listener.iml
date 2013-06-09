@@ -13,6 +13,28 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/com.typesafe/config/1.0.1/bundle/e1aed022d2af6a54b8d51a03eef4ad6a3d29a42d/config-1.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/com.typesafe/config/1.0.1/source/a65390d39c50967918f3b4924b152666e9833a5/config-1.0.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/org.mongodb/mongo-java-driver/2.11.1/jar/27b3fb1a03e44abb344c66b920ad89538cae685a/mongo-java-driver-2.11.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/org.mongodb/mongo-java-driver/2.11.1/source/69ada18f258da6a88f88dd584ba78aec1c8df827/mongo-java-driver-2.11.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/javax.servlet/javax.servlet-api/3.0.1/jar/6bf0ebb7efd993e222fc1112377b5e92a13b38dd/javax.servlet-api-3.0.1.jar!/" />
         </CLASSES>
         <JAVADOC />
