@@ -8,6 +8,10 @@ public class Main {
     static final Logger log = Loggers.contextLogger();
 
     public static void main(String[] args) {
+        new Main().start();
+    }
+
+    public void start() {
 
         TwitterStreamer streamer = new TwitterStreamer();
         PoorManPubsub.CanBeUpdated<Beam> beams = streamer.getBeams().mergeWith(sampleBeams());
@@ -22,6 +26,10 @@ public class Main {
         };
 
         streamer.start();
+    }
+
+    public void shutdown() {
+
     }
 
     private static PoorManPubsub.CanBeUpdated<Beam> sampleBeams() {

@@ -25,7 +25,7 @@ public class TwitterStreamer {
                     return;
                 }
 
-                beams.update(new Beam.Impl(System.currentTimeMillis(), loc.getLatitude(), loc.getLongitude(), status.getText()));
+                beams.update(new Beam.Impl(loc.getLatitude(), loc.getLongitude(), System.currentTimeMillis(), status.getText()));
             }
 
             @Override

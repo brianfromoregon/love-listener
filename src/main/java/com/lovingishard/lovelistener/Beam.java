@@ -15,15 +15,15 @@ public interface Beam {
     long getTime();
 
     class Impl implements Beam {
-        final long time;
         final double latitude;
         final double longitude;
+        final long time;
         final String detail;
 
-        public Impl(long time, double latitude, double longitude, String detail) {
-            this.time = time;
+        public Impl(double latitude, double longitude, long time, String detail) {
             this.latitude = latitude;
             this.longitude = longitude;
+            this.time = time;
             this.detail = detail;
         }
 
