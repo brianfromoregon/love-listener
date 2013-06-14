@@ -55,7 +55,7 @@ public class MongoBeamStore implements BeamWriter {
             BasicDBObject dbObject = new BasicDBObject()
                     .append("latitude", beam.getLatitude())
                     .append("longitude", beam.getLongitude())
-                    .append("detail", beam.getDetail())
+                    .append("message", beam.getMessage())
                     .append("time", beam.getTime())
                     .append("source", beam.getSource());
 

@@ -27,12 +27,16 @@ dependencies {
     // Not using dynamodb after all...
     //compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.4.5'
 
+    compile group: 'com.google.oath-client', name: 'google-oauth-client-java6', version: '1.15.0-rc'
+    compile group: 'com.google.http-client', name: 'google-http-client-gson', version: '1.15.0-rc'
+    compile group: 'com.google.apis', name: 'google-api-services-fusiontables', version: 'v1-rev25-1.15.0-rc'
     compile group: 'com.typesafe', name: 'config', version: '1.0.1'
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '2.11.1'
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
     compile group: 'org.twitter4j', name: 'twitter4j-core', version: '3.0.3'
     compile group: 'org.twitter4j', name: 'twitter4j-stream', version: '3.0.3'
     compile group: 'com.google.guava', name: 'guava', version: '14.0.1'
+    compile group: 'org.slf4j', name: 'jul-to-slf4j', version: '1.7.5'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.13'
 }

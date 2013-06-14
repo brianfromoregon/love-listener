@@ -12,21 +12,20 @@ public interface Beam {
     double getLongitude();
 
     /**
-     * Description of this beam, optional.
+     * Message from the user, optional.
      */
-    String getDetail();
+    String getMessage();
 
     /**
-     * When this beam was sent out, millis since epoch
-     * @return
+     * When this beam was reported, millis since epoch
      */
     long getTime();
 
     /**
      * How was this beam generated
-     *
+     * <p/>
      * 0 - fake
-     * 1 - twitter
+     * 1 - twitter #lovebeam
      * 2 - android app Beams
      */
     int getSource();
@@ -36,14 +35,14 @@ public interface Beam {
         final double longitude;
         final int source;
         final long time;
-        final String detail;
+        final String message;
 
-        public Impl(double latitude, double longitude, int source, long time, String detail) {
+        public Impl(double latitude, double longitude, int source, long time, String message) {
             this.latitude = latitude;
             this.longitude = longitude;
             this.source = source;
             this.time = time;
-            this.detail = detail;
+            this.message = message;
         }
 
         public long getTime() {
@@ -58,8 +57,8 @@ public interface Beam {
             return longitude;
         }
 
-        public String getDetail() {
-            return detail;
+        public String getMessage() {
+            return message;
         }
 
         @Override
@@ -74,8 +73,14 @@ public interface Beam {
                     .add("longitude", longitude)
                     .add("source", source)
                     .add("time", time)
-                    .add("detail", detail)
+                    .add("message", message)
                     .toString();
+        }
+    }
+
+    class Random extends Impl {
+        public Random() {
+            super(Math.random() * -180.0 + 90.0, Math.random() * -360.0 + 180.0, 0, System.currentTimeMillis(), null);
         }
     }
 }
